@@ -23,16 +23,27 @@ module.exports = class Router {
 
     // 上车！
     clist.forEach( controllerFileName => {
+      // 组织绝对路径
       let controllerFileABName = Path.join(controllerFolder, controllerFileName)
       let controller = require(controllerFileABName)
+      // 遍历 controller 里的 hanlder
       controller.forEach( handler => {
+        // 把 handler 装车
+
+        // 默认的 handler 方法是 get
+        if(!handler.method)
+          handler.method = 'GET'
+        // 检查方法名写错没有
+        if(!handlerMap[handler.method])
+          throw Error('你的 handler 的方法名写错了吧：' + handler.method)
         console.log(`路由 --- ${handler.method} ${handler.path}`)
+        // 真·上车
         HandlerMap[handler.method][handler.path] = handler
       })
     })
     console.log('路由收集完毕')
   }
   handle(request, response){
-    
+
   }
 }
