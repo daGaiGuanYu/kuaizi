@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/daGaiGuanYu/chopstick/issues"
   },
-  "homepage": "https://github.com/daGaiGuanYu/chopstick#readme"
+  "homepage": "https://github.com/daGaiGuanYu/chopstick#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
 }
