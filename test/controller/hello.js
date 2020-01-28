@@ -1,10 +1,12 @@
 const wear = require('wear-glove')
+const checkLogin = require('../glove/controller/check-login')
 
 module.exports = [
   wear({
     path: '/haha',
-    fn(request, response){
-      response.end('hello')
+    gloveList: [checkLogin],
+    fn(ctx){
+      ctx.response.end('hello')
     }
   })
 ]

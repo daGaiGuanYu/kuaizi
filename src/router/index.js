@@ -57,6 +57,6 @@ module.exports = class Router {
     if(!handler)
       __handle404(request, response)
     else
-      handler(request, response)
+      handler({ request, response })
   }
 }
