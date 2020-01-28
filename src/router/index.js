@@ -1,8 +1,16 @@
 const fs = require('fs')
 const Path = require('path')
 
+const HandlerMap = {
+  GET: {},
+  POST: {},
+  PUT: {},
+  DELETE: {}
+}
+
 module.exports = class Router {
-  constructor(controllerFolder){
+  constructor(controllerFolder, handle404){
+    this.handle404 = handle404
     console.log('初始化路由')
     // 确认路径
     let exist = fs.existsSync(controllerFolder)
@@ -12,12 +20,19 @@ module.exports = class Router {
     // 组装 controller 文件路径
     let clist = fs.readdirSync(controllerFolder)
     console.log('controller 们的名字 --- ' + clist)
-    clist = clist.map(item => Path.join(controllerFolder, item))
-    // require 所有 controller
-    clist = clist.map(item => require(item))
 
+    // 上车！
+    clist.forEach( controllerFileName => {
+      let controllerFileABName = Path.join(controllerFolder, controllerFileName)
+      let controller = require(controllerFileABName)
+      controller.forEach( handler => {
+        console.log(`路由 --- ${handler.method} ${handler.path}`)
+        HandlerMap[handler.method][handler.path] = handler
+      })
+    })
+    console.log('路由收集完毕')
   }
-  handle(request){
-
+  handle(request, response){
+    
   }
 }
