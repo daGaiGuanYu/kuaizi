@@ -39,6 +39,8 @@ module.exports = class Router {
         // 检查方法名写错没有
         if(!HandlerMap[handler.method])
           throw Error('你的 handler 的方法名写错了吧：' + handler.method)
+        if(!handler.path)
+          throw Error('别忘记写 path 啊')
         console.log(`路由 --- ${handler.method} ${handler.path}`)
         // 真·上车
         HandlerMap[handler.method][handler.path] = handler
