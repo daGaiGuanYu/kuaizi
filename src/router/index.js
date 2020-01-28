@@ -1,5 +1,7 @@
 const fs = require('fs')
 const Path = require('path')
+const Url = require('url')
+const writeJsonData = require('../write-json-data')
 
 const HandlerMap = {
   GET: {},
@@ -8,9 +10,11 @@ const HandlerMap = {
   DELETE: {}
 }
 
+let __handle404
+
 module.exports = class Router {
   constructor(controllerFolder, handle404){
-    this.handle404 = handle404
+    __handle404 = handle404
     console.log('初始化路由')
     // 确认路径
     let exist = fs.existsSync(controllerFolder)
@@ -29,7 +33,6 @@ module.exports = class Router {
       // 遍历 controller 里的 hanlder
       controller.forEach( handler => {
         // 把 handler 装车
-
         // 默认的 handler 方法是 get
         if(!handler.method)
           handler.method = 'GET'
@@ -44,6 +47,14 @@ module.exports = class Router {
     console.log('路由收集完毕')
   }
   handle(request, response){
-
+    let method = request.method
+    let pathname = Url.parse(request.url).pathname
+    if(!app.production)
+      console.log(`收到请求 ${method} ${pathname}`)
+    let handler = HandlerMap[request.method][pathname]
+    if(!handler)
+      __handle404(request, response)
+    else
+      handler(request, response)
   }
 }

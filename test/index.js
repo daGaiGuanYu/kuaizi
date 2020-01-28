@@ -1,7 +1,10 @@
-const ChopStick = require('../src/index')
+const Chopstick = require('../src/index')
 const Path = require('path')
 
-new ChopStick({
+new Chopstick({
   controllerFolderName: Path.join(__dirname, './controller'),
-  
+  port: 8080,
+  handle404(request, response){
+    Chopstick.responseJson(response, { code: 404 })
+  }
 })
