@@ -2,6 +2,7 @@ const fs = require('fs')
 const Path = require('path')
 const Url = require('url')
 const writeJsonData = require('../write-json-data')
+const CommonError = require('../common-error/index')
 
 const HandlerMap = {
   GET: {},
@@ -57,6 +58,12 @@ module.exports = class Router {
     if(!handler)
       __handle404(request, response)
     else
-      handler({ request, response })
+      try{
+        handler({ request, response })
+      }catch(e){
+        console.error(e)
+        let errResult = e.code?e.getEntity():CommonError.Unknown
+        writeJsonData(response, errResult)
+      }
   }
 }
