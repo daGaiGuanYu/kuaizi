@@ -17,6 +17,6 @@ class Chopstick {
 }
 
 Chopstick.responseJson = require('./write-json-data/index')
-
+Chopstick.ParseRequest = require('./parse-request/index')
 
 module.exports = Chopstick
