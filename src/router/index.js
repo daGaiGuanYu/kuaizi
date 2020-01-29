@@ -11,11 +11,14 @@ const HandlerMap = {
   DELETE: {}
 }
 
-let __handle404
+let __handle404 = (request, response) => {
+  writeJsonData(response, CommonError.NotFound)
+}
 
 module.exports = class Router {
   constructor(controllerFolder, handle404){
-    __handle404 = handle404
+    if(handle404)
+      __handle404 = handle404
     console.log('初始化路由')
     // 确认路径
     let exist = fs.existsSync(controllerFolder)

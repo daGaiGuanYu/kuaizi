@@ -13,6 +13,7 @@ class CommonError extends Error {
   }
 }
 
-Object.assign(CommonError, entity)
+CommonError.Unknown = { code: 1, msg: '未知错误'}
+CommonError.NotFound = { code: 404, msg: '未找到资源'}
 
 module.exports = CommonError
