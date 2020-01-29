@@ -18,5 +18,8 @@ class Chopstick {
 
 Chopstick.responseJson = require('./write-json-data/index')
 Chopstick.ParseRequest = require('./parse-request/index')
+Chopstick.glove = {
+  commonRequest: require('./glove/common-request')
+}
 
 module.exports = Chopstick
