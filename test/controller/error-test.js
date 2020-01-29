@@ -4,7 +4,7 @@ const Chopstick = require('../../src/index')
 module.exports = [
   wear({
     path: '/error',
-    gloveList: [],
+    gloveList: [Chopstick.glove.commonRequest],
     fn(ctx){
       throw new Chopstick.CommonError('这是一个测试错误', 110)
       return '你应该看不到这个响应'
