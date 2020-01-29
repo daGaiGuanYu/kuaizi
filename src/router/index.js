@@ -52,7 +52,7 @@ module.exports = class Router {
     })
     console.log('路由收集完毕')
   }
-  handle(request, response){
+  async handle(request, response){
     let method = request.method
     let pathname = Url.parse(request.url).pathname
     if(!app.production)
@@ -62,7 +62,7 @@ module.exports = class Router {
       __handle404(request, response)
     else
       try{
-        handler({ request, response })
+        await handler({ request, response })
       }catch(e){
         console.error(e)
         let errResult = e.code?e.getEntity():CommonError.Unknown
