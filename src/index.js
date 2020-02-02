@@ -19,6 +19,9 @@ class Chopstick {
 Chopstick.responseJson = require('./write-json-data/index')
 Chopstick.ParseRequest = require('./parse-request/index')
 Chopstick.CommonError = require('./common-error/index')
+Chopstick.util = {
+  sequelize: require('./util/sequelize')
+}
 Chopstick.glove = {
   commonRequest: require('./glove/common-request')
 }
