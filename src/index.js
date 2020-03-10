@@ -1,5 +1,8 @@
+// @ts-check
+
 const Router = require('./router/index')
 const http = require('http')
+const logger = require('./logger')
 
 class Chopstick {
   constructor({ port=3000, controllerFolderName, handle404 }){
@@ -12,10 +15,11 @@ class Chopstick {
     this.port = port
     this.router = new Router(controllerFolderName, handle404)
     http.createServer(this.router.handle).listen(port)
-    console.log(`started on ${port} at --- ${new Date()}`)
+    logger.log(`started on ${port}`)
   }
 }
 
+Chopstick.logger = logger
 Chopstick.responseJson = require('./write-json-data/index')
 Chopstick.ParseRequest = require('./parse-request/index')
 Chopstick.CommonError = require('./common-error/index')
