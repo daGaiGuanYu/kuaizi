@@ -2,7 +2,7 @@
 const fs = require('fs')
 const Path = require('path')
 const Url = require('url')
-const writeJsonData = require('../write-json-data')
+const { writeJson } = require('../request-util')
 const CommonError = require('../common-error/index')
 const { log, logerr } = require('../logger')
 
@@ -14,7 +14,7 @@ const HandlerMap = {
 }
 
 let __handle404 = (request, response) => {
-  writeJsonData(response, CommonError.NotFound)
+  writeJson(response, CommonError.NotFound)
 }
 
 module.exports = class Router {
@@ -68,7 +68,7 @@ module.exports = class Router {
       }catch(e){
         logerr(e)
         let errResult = e.code?e.getEntity():CommonError.Unknown
-        writeJsonData(response, errResult)
+        writeJson(response, errResult)
       }
   }
 }

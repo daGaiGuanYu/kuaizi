@@ -20,8 +20,7 @@ class Chopstick {
 }
 
 Chopstick.logger = logger
-Chopstick.responseJson = require('./write-json-data/index')
-Chopstick.ParseRequest = require('./parse-request/index')
+Chopstick.RequestUtil = require('./request-util/index')
 Chopstick.CommonError = require('./common-error/index')
 Chopstick.util = {
   sequelize: require('./util/sequelize')

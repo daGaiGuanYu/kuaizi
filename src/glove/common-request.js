@@ -1,12 +1,12 @@
-const ParseRequest = require('../parse-request/index')
-const writeJsonData = require('../write-json-data/index')
+// @ts-check
+const { parseJson, parseQuery, writeJson } = require('../request-util/index')
 
 module.exports = async function(fn, ctx){
-  ctx.data = await ParseRequest.json(ctx.request)
-  ctx.query = ParseRequest.query(ctx.request)
+  ctx.data = await parseJson(ctx.request)
+  ctx.query = parseQuery(ctx.request)
   let result = await fn(ctx)
   if(result)
-    writeJsonData(ctx.response, {
+    writeJson(ctx.response, {
       code: 0,
       data: result
     })

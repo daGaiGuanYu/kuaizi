@@ -1,3 +1,5 @@
+// @ts-check
+
 class CommonError extends Error {
   constructor(msg, code){
     super(msg)
