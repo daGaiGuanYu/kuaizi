@@ -5,6 +5,7 @@ const Url = require('url')
 const { writeJson } = require('../request-util')
 const CommonError = require('../common-error/index')
 const { log, logerr } = require('../logger')
+const { http: { method } } = require('../constants')
 
 const HandlerMap = {
   GET: {},
@@ -41,12 +42,12 @@ module.exports = class Router {
         // 把 handler 装车
         // 默认的 handler 方法是 get
         if(!handler.method)
-          handler.method = 'GET'
+          handler.method = method.GET
         // 检查方法名写错没有
         if(!HandlerMap[handler.method])
           throw Error('你的 handler 的方法名写错了吧：' + handler.method)
         if(!handler.path)
-          throw Error('别忘记写 path 啊')
+          handler.path = '/' + controllerFileName.split('.')[0] + (handler.appendPath||'')
         log(`路由 --- ${handler.method} ${handler.path}`)
         // 真·上车
         HandlerMap[handler.method][handler.path] = handler

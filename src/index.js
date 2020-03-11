@@ -19,6 +19,7 @@ class Chopstick {
   }
 }
 
+Chopstick.Constants = require('./constants')
 Chopstick.logger = logger
 Chopstick.RequestUtil = require('./request-util/index')
 Chopstick.CommonError = require('./common-error/index')
