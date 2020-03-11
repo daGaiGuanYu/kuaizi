@@ -5,7 +5,7 @@ const http = require('http')
 const logger = require('./logger')
 
 class Chopstick {
-  constructor({ port=3000, controllerFolderName, handle404 }){
+  constructor({ port=3000, controllerFolderName, handle404, baseUrl='' }){
     if(global.app)
       throw Error('不可以重复实例化')
     else
@@ -13,7 +13,7 @@ class Chopstick {
         production: process.argv[2] == 'pro'
       }
     this.port = port
-    this.router = new Router(controllerFolderName, handle404)
+    this.router = new Router(controllerFolderName, baseUrl, handle404)
     http.createServer(this.router.handle).listen(port)
     logger.log(`started on ${port}`)
   }

@@ -19,7 +19,7 @@ let __handle404 = (request, response) => {
 }
 
 module.exports = class Router {
-  constructor(controllerFolder, handle404){
+  constructor(controllerFolder, baseUrl, handle404){
     if(handle404)
       __handle404 = handle404
     log('初始化路由')
@@ -48,9 +48,11 @@ module.exports = class Router {
           throw Error('你的 handler 的方法名写错了吧：' + handler.method)
         if(!handler.path)
           handler.path = '/' + controllerFileName.split('.')[0] + (handler.appendPath||'')
+        handler.path = baseUrl + handler.path
+        
         log(`路由 --- ${handler.method} ${handler.path}`)
         // 真·上车
-        HandlerMap[handler.method][handler.path] = handler
+        HandlerMap[handler.method][handler.path] = handler.handler
       })
     })
     log('路由收集完毕')
