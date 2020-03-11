@@ -1,17 +1,10 @@
 // @ts-check
-
 const Router = require('./router/index')
 const http = require('http')
 const logger = require('./logger')
 
 class Chopstick {
   constructor({ port=3000, controllerFolderName, handle404, baseUrl='' }){
-    if(global.app)
-      throw Error('不可以重复实例化')
-    else
-      global.app = {
-        production: process.argv[2] == 'pro'
-      }
     this.port = port
     this.router = new Router(controllerFolderName, baseUrl, handle404)
     http.createServer(this.router.handle).listen(port)
@@ -19,6 +12,7 @@ class Chopstick {
   }
 }
 
+Chopstick.app = require('./ctx/app')
 Chopstick.Constants = require('./constants')
 Chopstick.logger = logger
 Chopstick.RequestUtil = require('./request-util/index')

@@ -1,4 +1,5 @@
 // @ts-check
+const app = require('../ctx/app')
 const fs = require('fs')
 const Path = require('path')
 const Url = require('url')
@@ -60,7 +61,7 @@ module.exports = class Router {
   async handle(request, response){
     let method = request.method
     let pathname = Url.parse(request.url).pathname
-    if(!app.production)
+    if(!app.isProduction())
       log(`收到请求 ${method} ${pathname}`)
     let handler = HandlerMap[request.method][pathname]
     if(!handler)
