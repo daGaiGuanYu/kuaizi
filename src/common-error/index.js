@@ -13,7 +13,8 @@ class CommonError extends Error {
   }
 }
 
-CommonError.Unknown = { code: 1, msg: '未知错误'}
-CommonError.NotFound = { code: 404, msg: '未找到资源'}
+CommonError.Unknown = { code: 1, msg: '未知错误' }
+CommonError.WrongUsernameOrPassword = { code: 2, msg: '用户名或密码错误' }
+CommonError.NotFound = { code: 404, msg: '未找到资源' }
 
 module.exports = CommonError
