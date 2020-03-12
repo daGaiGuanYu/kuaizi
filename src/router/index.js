@@ -26,7 +26,7 @@ module.exports = class Router {
     // 确认路径
     let exist = fs.existsSync(controllerFolder)
     if(!exist)
-      throw Error(controllerFolder + '文件夹不存在，请再次确认路径，最好使用绝对路径')
+      throw Error(controllerFolder + '文件夹不存在，请再次确认路径，最好使用绝对路径') // 这种错误的目的在于阻止服务器运行
     console.log('controller 们的位置 --- ' + controllerFolder)
     // 组装 controller 文件路径
     let clist = fs.readdirSync(controllerFolder)

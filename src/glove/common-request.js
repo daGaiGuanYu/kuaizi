@@ -8,9 +8,7 @@ module.exports = async function(fn, ctx){
   let result = await fn(ctx)
 
   if(result){
-    if(result instanceof CommonError) // 自动处理 CommonError
-      result = result.getEntity()
-    else
+    if(!(result instanceof CommonError))
       result = {
         code: 0,
         data: result
