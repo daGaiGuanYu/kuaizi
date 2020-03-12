@@ -12,7 +12,7 @@ class CommonError extends Error {
     }
   }
   toJSON(){ // 改变 JSON.stringify(new CommonError()) 的行为
-    return JSON.stringify(this.getEntity())
+    return this.getEntity()
   }
 }
 
