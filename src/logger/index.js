@@ -1,25 +1,14 @@
-// @ts-check
-
-/** @param {any} tar */
-const log = function(tar){
-  if(tar.constructor == String)
-    console.log(new Date() + ' ' + tar)
-  else{
-    console.log(new Date())
-    console.log(tar)
-  }
+const raw = {
+  log: console.log,
+  err: console.error
 }
 
-/** @param {any} tar */
-const logerr = function(tar){
-  if(tar.constructor == String)
-    console.error(new Date() + ' ' + tar)
-  else{
-    console.error(new Date())
-    console.error(tar)
-  }
+console.log = function(...args){
+  raw.log(new Date(), ...args)
 }
 
-module.exports = {
-  log, logerr
+console.error = function(...args){
+  raw.err(new Date(), ...args)
 }
+
+module.exports = {}
