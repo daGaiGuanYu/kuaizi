@@ -69,8 +69,8 @@ module.exports = class Router {
       try{
         await handler({ request, response })
       }catch(e){
-        console.error(e)
-        let errResult = e.code?e.getEntity():CommonError.Unknown
+        console.error(e) // 应该区分哪些异常需要打印调用栈，哪些不需要
+        let errResult = e.code?e:CommonError.Unknown
         writeJson(response, errResult)
       }
   }
