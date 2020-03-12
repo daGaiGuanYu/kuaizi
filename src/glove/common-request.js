@@ -6,11 +6,15 @@ module.exports = async function(fn, ctx){
   ctx.data = await parseJson(ctx.request)
   ctx.query = parseQuery(ctx.request)
   let result = await fn(ctx)
-  if(result instanceof CommonError) // 自动处理 CommonError
-    result = result.getEntity()
-  if(result)
-    writeJson(ctx.response, {
-      code: 0,
-      data: result
-    })
+
+  if(result){
+    if(result instanceof CommonError) // 自动处理 CommonError
+      result = result.getEntity()
+    else
+      result = {
+        code: 0,
+        data: result
+      }
+    writeJson(ctx.response, result)
+  }
 }
