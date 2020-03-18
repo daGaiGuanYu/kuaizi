@@ -6,6 +6,7 @@ const Url = require('url')
 const { writeJson } = require('../request-util')
 const CommonError = require('../common-error/index')
 const { http: { method } } = require('../constants')
+const RequestContext = require('../ctx/request')
 
 const HandlerMap = {
   GET: {},
@@ -66,8 +67,8 @@ module.exports = class Router {
     if(!handler)
       __handle404(request, response)
     else
-      try{
-        await handler({ request, response })
+      try {
+        await handler(new RequestContext(request, response))
       }catch(e){
         console.error(e) // 应该区分哪些异常需要打印调用栈，哪些不需要
         let errResult = e.code?e:CommonError.Unknown
