@@ -3,6 +3,7 @@ const Url = require('url')
 const qs = require('querystring')
 const app = require('../ctx/app')
 const http = require('http')
+const CommonError = require('../common-error/index')
 
 /** @param {http.IncomingMessage} req */
 function getQuery(req){
@@ -33,6 +34,11 @@ function getJson(req){
  * @param {any} data
  */
 function writeJson(res, data){
+  if(!(data instanceof CommonError))
+    data = {
+      code: 0,
+      data
+    }
   res.setHeader('Content-type', 'application/json')
   let result = JSON.stringify(data)
   if(!app.isProduction()){
