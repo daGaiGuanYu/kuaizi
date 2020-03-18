@@ -1,6 +1,6 @@
 {
   "name": "chopstick",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "description": "你只需要一双筷子",
   "main": "src/index.js",
   "scripts": {

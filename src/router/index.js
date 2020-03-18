@@ -66,13 +66,16 @@ module.exports = class Router {
     let handler = HandlerMap[request.method][pathname]
     if(!handler)
       __handle404(request, response)
-    else
+    else{
+      let result
       try {
-        await handler(new RequestContext(request, response))
+        result = await handler(new RequestContext(request, response))
       }catch(e){
         console.error(e) // 应该区分哪些异常需要打印调用栈，哪些不需要
-        let errResult = e.code?e:CommonError.Unknown
-        writeJson(response, errResult)
+        result = e.code?e:CommonError.Unknown
       }
+      if(result)
+        writeJson(response, result)
+    }
   }
 }
