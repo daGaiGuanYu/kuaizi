@@ -19,6 +19,7 @@ class CommonError extends Error {
 
 CommonError.Unknown = new CommonError('未知错误', 1)
 CommonError.WrongUsernameOrPassword = new CommonError('用户名或密码错误', 2)
+CommonError.NotLogin = new CommonError('请先登录', 3)
 CommonError.NotFound = new CommonError('未找到资源', 404)
 
 module.exports = CommonError
