@@ -1,6 +1,6 @@
 //@ts-check
 const http = require('http')
-const util = require('./request-util')
+const util = require('../util/request')
 
 class RequestContext{
   /**
