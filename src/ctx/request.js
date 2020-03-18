@@ -1,7 +1,7 @@
 //@ts-check
 const http = require('http')
 
-module.exports = class RequestContext{
+class RequestContext{
   /**
    * @param {http.IncomingMessage} req 
    * @param {http.ServerResponse} res 
@@ -24,3 +24,5 @@ module.exports = class RequestContext{
     // TODO
   }
 }
+
+module.exports = RequestContext
