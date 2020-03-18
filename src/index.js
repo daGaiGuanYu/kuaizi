@@ -16,6 +16,8 @@ Chopstick.app = require('./ctx/app')
 Chopstick.Constants = require('./constants')
 Chopstick.RequestUtil = require('./request-util/index')
 Chopstick.CommonError = require('./common-error/index')
+Chopstick.RequestContext = require('./ctx/request')
+
 Chopstick.util = {
   sequelize: require('./util/sequelize')
 }
