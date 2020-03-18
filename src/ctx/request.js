@@ -20,7 +20,7 @@ class RequestContext{
   }
 
   async getJson(){
-    if(this.__json)
+    if(!this.__json)
       this.__json = await util.getJson(this.req)
     return this.__json
   }
