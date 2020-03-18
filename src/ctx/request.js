@@ -1,5 +1,6 @@
 //@ts-check
 const http = require('http')
+const util = require('./request-util')
 
 class RequestContext{
   /**
@@ -12,16 +13,20 @@ class RequestContext{
     this.sessionData = {}
   }
 
-  getQueryData(){
-    // TODO
+  getQuery(){
+    if(!this.__query)
+      this.__query = util.getQuery(this.req)
+    return this.__query
   }
 
-  getJsonBodyData(){
-    // TODO
+  async getJson(){
+    if(this.__json)
+      this.__json = await util.getJson(this.req)
+    return this.__json
   }
 
-  writeJsonData(){
-    // TODO
+  writeJson(data){
+    return util.writeJson(this.res, data)
   }
 }
 
