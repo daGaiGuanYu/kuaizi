@@ -9,17 +9,18 @@ module.exports = class RequestContext{
   constructor(req, res){
     this.req = req
     this.res = res
+    this.sessionData = {}
   }
 
   getQueryData(){
-    this.__query = {}
+    // TODO
   }
 
   getJsonBodyData(){
-    this.__data = {}
+    // TODO
   }
 
   writeJsonData(){
-    
+    // TODO
   }
 }
