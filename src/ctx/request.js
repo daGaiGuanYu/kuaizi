@@ -24,10 +24,6 @@ class RequestContext{
       this.__json = await util.getJson(this.req)
     return this.__json
   }
-
-  writeJson(data){
-    return util.writeJson(this.res, data)
-  }
 }
 
 module.exports = RequestContext
