@@ -1,9 +1,8 @@
 // @ts-check
-
 /**
  * @typedef {import('../ctx/request')} ctx
  * @typedef {(ctx: ctx) => any} handler
- * @typedef {(fn: glove, ctx: ctx) => handler} glove
+ * @typedef {(fn: handler, ctx: ctx) => handler} glove
  * @typedef {import('http').IncomingMessage} req
  */
 
