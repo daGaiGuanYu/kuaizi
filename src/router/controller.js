@@ -12,7 +12,7 @@ const router = require('./router.js')
 class Controller {
   /**
    * @param {String} path 
-   * @param {Array<glove>} gloveList 
+   * @param {Array<glove>} [gloveList] 
    */
   constructor(path, gloveList){
     this.path = path || ''
@@ -50,15 +50,39 @@ class Controller {
     router.add(method, path, gloveList, handler)
   }
 
+  /**
+   * 添加新的 get handler
+   * @param {String | Array<glove> | handler} path 
+   * @param {Array<glove> | handler} [gloveList] 
+   * @param {handler} [handler] 
+   */
   get(path, gloveList, handler){
     this.__add('GET', path, gloveList, handler)
   }
+  /**
+   * 添加新的 post handler
+   * @param {String | Array<glove> | handler} path 
+   * @param {Array<glove> | handler} [gloveList] 
+   * @param {handler} [handler] 
+   */
   post(path, gloveList, handler){
     this.__add('POST', path, gloveList, handler)
   }
+  /**
+   * 添加新的 put handler
+   * @param {String | Array<glove> | handler} path 
+   * @param {Array<glove> | handler} [gloveList] 
+   * @param {handler} [handler] 
+   */
   put(path, gloveList, handler){
     this.__add('PUT', path, gloveList, handler)
   }
+  /**
+   * 添加新的 delete handler
+   * @param {String | Array<glove> | handler} path 
+   * @param {Array<glove> | handler} [gloveList] 
+   * @param {handler} [handler] 
+   */
   delete(path, gloveList, handler){
     this.__add('DELETE', path, gloveList, handler)
   }

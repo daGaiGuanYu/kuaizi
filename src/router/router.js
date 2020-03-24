@@ -58,8 +58,7 @@ function add(method, path, gloveList, handler){ // 这里不模仿 axios 把默�
     throw Error(`${method}: ${path} 已经注册过了（有两个 handler 对应相同的 method 和 path）`)
   
   if(!handler){
-    // @ts-ignore
-    handler = gloveList
+    handler = /** @type {handler} */(gloveList)
     gloveList = []
   }
   if(!handler)
@@ -69,8 +68,8 @@ function add(method, path, gloveList, handler){ // 这里不模仿 axios 把默�
   if(gloveList.constructor != Array)
     throw Error('gloveList 参数必须是个数组，即使你只想提供一个手套，也要用中括号包起来')
   
-  // @ts-ignore
-  map[method][path] = wear([...configuration.gloveList, ...gloveList], handler)
+  map[method][path] = wear([...configuration.gloveList, .../** @type {Array<glove>} */(gloveList)], handler)
+  console.log(`收集到路由：${method} ${path}`)
 }
 
 /**
