@@ -7,10 +7,7 @@ Chopstick.router.config('/api', ctx => {
   console.log('这是全局 glove')
   return fn(ctx)
 }])
-Chopstick.router.add('GET', '/haha', [(fn, ctx) => {
-  console.log('这是 handler glove')
-  return fn(ctx)
-}], function(ctx){
+Chopstick.router.add.get('/haha', function(ctx){
   console.log('这里是 handler')
   return 1
 })
