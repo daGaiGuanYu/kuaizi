@@ -4,8 +4,7 @@
   "description": "你只需要一双筷子",
   "main": "src/index.js",
   "scripts": {
-    "test": "nodemon ./test/index.js",
-    "test-router": "node ./src/router/test/index.js"
+    "test": "nodemon ./test/index.js"
   },
   "repository": {
     "type": "git",

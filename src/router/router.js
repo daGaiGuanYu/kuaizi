@@ -103,7 +103,7 @@ add.delete = (path, gloveList, handler) => add('DELETE', path, gloveList, handle
 
 // 根据 path 和 method 获取 handler
 function get(method, path){
-  return map[method][path]
+  return map[method][path]||configuration.handle404
 }
 
 module.exports = {
