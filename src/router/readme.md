@@ -1,10 +1,19 @@
-# Dispatcher
-接收 request，交给提 handler 处理
+# 三种对象
 
-## 特点
-+ 把一个文件夹下的所有 js 都当作 Controller
-+ 文件夹名默认作为所有 handler 的 path
-+ handler 可以在默认 path 的基础后追加字串（appendPath），或者，重新设置（path）。path 会覆盖 appendPath
+## handler
++ 处理请求的单元
 
-## 将来可能……
-+ 提供多文件夹、子文件夹、文件名正则匹配
+由下面三部分组成
++ 请求的 http 方法
++ 请求的路径
++ 处理请求的函数
++ 手套
+
+## controller
++ 一个集合，由“具有相似特征的 handler（比如对同一个数据表的操作）”组成
++ 对 controller 的配置将应用到 handler
+
+## router
++ 全局唯一
++ 可以不配置，只能配置一次，多次配置会报错
++ 所有配置应用到所有 handler

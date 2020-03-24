@@ -1,6 +1,6 @@
 {
   "name": "chopstick",
-  "version": "1.4.9",
+  "version": "2.0.0",
   "description": "你只需要一双筷子",
   "main": "src/index.js",
   "scripts": {
@@ -22,5 +22,8 @@
   "homepage": "https://github.com/daGaiGuanYu/chopstick#readme",
   "devDependencies": {
     "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "wear-glove": "^2.0.0"
   }
 }
