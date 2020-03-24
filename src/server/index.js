@@ -1,7 +1,7 @@
 // @ts-check
 const http = require('http')
 const RequestContext = require('../ctx/request')
-const router = require('../router/index')
+const router = require('../router/router')
 const CommonError = require('../common-error/index')
 const { writeJson } = require('../util/request')
 
@@ -18,7 +18,7 @@ function start(port = 6666){
 async function handle(req, res){
   let result
   try {
-    result = await router.getHandler(req)(new RequestContext(req, res))  
+    result = await router.get(req)(new RequestContext(req, res))  
   }catch(e){
     console.error(e) // 应该区分哪些异常需要打印调用栈，哪些不需要
     result = e.code?e:CommonError.Unknown

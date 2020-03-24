@@ -23,6 +23,6 @@
     "nodemon": "^2.0.2"
   },
   "dependencies": {
-    "wear-glove": "^2.0.0"
+    "wear-glove": "^2.0.1"
   }
 }
