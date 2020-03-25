@@ -7,7 +7,7 @@
  * @typedef {(fn: handler, ctx: ctx) => handler} glove
  * @typedef {import('http').IncomingMessage} req
  */
-const router = require('./router.js')
+const router = require('./index')
 
 class Controller {
   /**
