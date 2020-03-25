@@ -26,7 +26,7 @@ const configuration = {
 }
 /**
  * router 的全局配置
- * @param {String} baseUrl 
+ * @param {String} [baseUrl] 
  * @param {handler} [handle404] 
  * @param {Array<glove>} [gloveList] 
  */
@@ -63,12 +63,12 @@ function add(method, path, gloveList, handler){ // 这里不模仿 axios 把默�
   }
   if(!handler)
     throw Error('handler 不可为空')
-  if(handler.constructor != Function)
+  if(!(handler instanceof Function))
     throw Error('handler 必须是函数')
-  if(gloveList.constructor != Array)
+  if(!(gloveList instanceof Array))
     throw Error('gloveList 参数必须是个数组，即使你只想提供一个手套，也要用中括号包起来')
   
-  map[method][path] = wear([...configuration.gloveList, .../** @type {Array<glove>} */(gloveList)], handler)
+  map[method][path] = wear([...configuration.gloveList, ...gloveList], handler)
   console.log(`收集到路由：${method} ${path}`)
 }
 
