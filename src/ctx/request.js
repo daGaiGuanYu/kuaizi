@@ -1,10 +1,11 @@
 //@ts-check
 const util = require('../util/request')
+const type = require('../type-def/index')
 
 class RequestContext{
   /**
-   * @param {IncomingMessage} req 
-   * @param {ServerResponse} res 
+   * @param {type.IncomingMessage} req 
+   * @param {type.ServerResponse} res 
    */
   constructor(req, res){
     this.req = req

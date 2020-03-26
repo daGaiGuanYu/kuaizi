@@ -1,16 +1,18 @@
 //@ts-check
+
+const TypeDef = require('../type-def/index')
 const Url = require('url')
 const qs = require('querystring')
 const app = require('../ctx/app')
 const CommonError = require('../common-error/index')
 
-/** @param {IncomingMessage} req */
+/** @param {TypeDef.IncomingMessage} req */
 function getQuery(req){
   let querystring = Url.parse(req.url).query
   return qs.parse(querystring)
 }
 
-/** @param {IncomingMessage} req */
+/** @param {TypeDef.IncomingMessage} req */
 function getJson(req){
   return new Promise( resolve => {
     let jsonStr = ''
@@ -29,7 +31,7 @@ function getJson(req){
 }
 
 /**
- * @param {ServerResponse} res
+ * @param {TypeDef.ServerResponse} res
  * @param {any} data
  */
 function writeJson(res, data){
