@@ -42,7 +42,14 @@ class Controller {
       gloveList = /** @type{Array<TypeDef.RequestGlove>} */(path)
       path = this.path
     }
-    router.add(method, path, [...this.gloveList, .../** @type{Array<TypeDef.RequestGlove>} */(gloveList)], handler)
+    
+    if(gloveList instanceof Array)
+      gloveList = [...this.gloveList, ...gloveList]
+    else{
+      handler = gloveList
+      gloveList = this.gloveList
+    }
+    router.add(method, path, gloveList, handler)
   }
 
   /**
