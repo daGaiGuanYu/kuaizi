@@ -1,11 +1,4 @@
 // @ts-check
-/**
- * @typedef {import('../ctx/request')} ctx
- * @typedef {(ctx: ctx) => any} handler
- * @typedef {(fn: handler, ctx: ctx) => handler} glove
- * @typedef {import('http').IncomingMessage} req
- */
-
 const Url = require('url')
 const wear = require('wear-glove')
 const CommonError = require('../common-error/index')
@@ -27,8 +20,8 @@ const configuration = {
 /**
  * router 的全局配置
  * @param {String} [baseUrl] 
- * @param {handler} [handle404] 
- * @param {Array<glove>} [gloveList] 
+ * @param {RequestHandler} [handle404] 
+ * @param {Array<RequestGlove>} [gloveList] 
  */
 function config(baseUrl, handle404, gloveList){
   if(configuration.configed)
@@ -46,8 +39,8 @@ function config(baseUrl, handle404, gloveList){
  * 添加新的 handler
  * @param {String} method 
  * @param {String} path 
- * @param {Array<glove> | handler} gloveList 
- * @param {handler} [handler]
+ * @param {Array<RequestGlove> | RequestHandler} gloveList 
+ * @param {RequestHandler} [handler]
  */
 function add(method, path, gloveList, handler){ // 这里不模仿 axios 把默认当作 get，这点“适应成本”是应该被付出的
   if(['GET', 'POST', 'PUT', 'DELETE'].indexOf(method) == -1)
@@ -59,7 +52,7 @@ function add(method, path, gloveList, handler){ // 这里不模仿 axios 把默�
     throw Error(`${method}: ${path} 已经注册过了（有两个 handler 对应相同的 method 和 path）`)
   
   if(!handler){
-    handler = /** @type {handler} */(gloveList)
+    handler = /** @type {RequestHandler} */(gloveList)
     gloveList = []
   }
   if(!handler)
@@ -76,39 +69,39 @@ function add(method, path, gloveList, handler){ // 这里不模仿 axios 把默�
 /**
  * 添加新的 get handler
  * @param {String} path 
- * @param {Array<glove> | handler} gloveList 
- * @param {handler} [handler]
+ * @param {Array<RequestGlove> | RequestHandler} gloveList 
+ * @param {RequestHandler} [handler]
  */
 add.get = (path, gloveList, handler) => add('GET', path, gloveList, handler) // path 不应该被省略，所以和 controller 不同的是，这里的 path 参数被单独列出来
 
 /**
  * 添加新的 post handler
  * @param {String} path
- * @param {Array<glove> | handler} gloveList 
- * @param {handler} [handler]
+ * @param {Array<RequestGlove> | RequestHandler} gloveList 
+ * @param {RequestHandler} [handler]
  */
 add.post = (path, gloveList, handler) => add('POST', path, gloveList, handler)
 
 /**
  * 添加新的 put handler
  * @param {String} path
- * @param {Array<glove> | handler} gloveList 
- * @param {handler} [handler]
+ * @param {Array<RequestGlove> | RequestHandler} gloveList 
+ * @param {RequestHandler} [handler]
  */
 add.put = (path, gloveList, handler) => add('PUT', path, gloveList, handler)
 
 /**
  * 添加新的 delete handler
  * @param {String} path
- * @param {Array<glove> | handler} gloveList 
- * @param {handler} [handler]
+ * @param {Array<RequestGlove> | RequestHandler} gloveList 
+ * @param {RequestHandler} [handler]
  */
 add.delete = (path, gloveList, handler) => add('DELETE', path, gloveList, handler)
 // 不要增加其他的 http 方法，除非你已经知道那些有什么用，并且认为是必要的
 
 
 const isPro = require('../ctx/app').isProduction()
-/** @param {req} req */
+/** @param {IncomingMessage} req */
 function get(req){
   let method = req.method
   let path = Url.parse(req.url).pathname

@@ -1,11 +1,10 @@
 //@ts-check
-const http = require('http')
 const util = require('../util/request')
 
 class RequestContext{
   /**
-   * @param {http.IncomingMessage} req 
-   * @param {http.ServerResponse} res 
+   * @param {IncomingMessage} req 
+   * @param {ServerResponse} res 
    */
   constructor(req, res){
     this.req = req

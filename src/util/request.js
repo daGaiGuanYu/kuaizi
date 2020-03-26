@@ -2,16 +2,15 @@
 const Url = require('url')
 const qs = require('querystring')
 const app = require('../ctx/app')
-const http = require('http')
 const CommonError = require('../common-error/index')
 
-/** @param {http.IncomingMessage} req */
+/** @param {IncomingMessage} req */
 function getQuery(req){
   let querystring = Url.parse(req.url).query
   return qs.parse(querystring)
 }
 
-/** @param {http.IncomingMessage} req */
+/** @param {IncomingMessage} req */
 function getJson(req){
   return new Promise( resolve => {
     let jsonStr = ''
@@ -30,7 +29,7 @@ function getJson(req){
 }
 
 /**
- * @param {http.ServerResponse} res
+ * @param {ServerResponse} res
  * @param {any} data
  */
 function writeJson(res, data){

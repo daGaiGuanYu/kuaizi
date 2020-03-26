@@ -1,8 +1,9 @@
 {
   "name": "chopstick",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "你只需要一双筷子",
   "main": "src/index.js",
+  "types": "src/index.d.ts",
   "scripts": {
     "test": "nodemon ./test/index.js"
   },
