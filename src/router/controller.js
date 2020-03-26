@@ -39,7 +39,7 @@ class Controller {
    */
   __add(method, path, gloveList, handler){
     // router.add 只需要明确的 method 和 path 即可
-    if(path instanceof String){
+    if(path.constructor == String){
       path = this.path + path
     } else {
       // path 不是字符串意味着 path 和 gloveList 实际上就是 gloveList 和 handler

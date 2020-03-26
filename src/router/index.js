@@ -37,8 +37,9 @@ function config(baseUrl, handle404, gloveList){
   if(baseUrl)
     configuration.baseUrl = baseUrl
   if(handle404)
-    configuration.handle404 = handle404  
-  configuration.gloveList = gloveList
+    configuration.handle404 = handle404
+  if(gloveList)
+    configuration.gloveList = gloveList
 }
 
 /**
