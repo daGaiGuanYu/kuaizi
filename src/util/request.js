@@ -4,7 +4,7 @@ const TypeDef = require('../type-def/index')
 const Url = require('url')
 const qs = require('querystring')
 const app = require('../ctx/app')
-const CommonError = require('../common-error/index')
+const CommonError = require('../error/index')
 
 /** @param {TypeDef.IncomingMessage} req */
 function getQuery(req){

@@ -2,7 +2,8 @@
 const http = require('http')
 const RequestContext = require('../ctx/request')
 const router = require('../router')
-const CommonError = require('../common-error/index')
+const CommonError = require('../error/index')
+const ExpectedError = require('../error/expected-error')
 const { writeJson } = require('../util/request')
 
 let started = false
@@ -20,7 +21,8 @@ async function handle(req, res){
   try {
     result = await router.get(req)(new RequestContext(req, res))  
   }catch(e){
-    console.error(e) // 应该区分哪些异常需要打印调用栈，哪些不需要
+    if(!(e instanceof ExpectedError))
+      console.error(e)
     result = e.code?e:CommonError.Unknown
   }
   if(result)

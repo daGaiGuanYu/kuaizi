@@ -10,5 +10,6 @@ module.exports = {
     add: router.add
   },
   server: require('./server/index'),
-  CommonError: require('./common-error/index')
+  CommonError: require('./error/index'),
+  ExpectedError: require('./error/expected-error')
 }

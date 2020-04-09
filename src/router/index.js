@@ -2,7 +2,7 @@
 const TypeDef = require('../type-def/index')
 const Url = require('url')
 const wear = require('wear-glove')
-const CommonError = require('../common-error/index')
+const CommonError = require('../error/index')
 
 const map = {
   'GET': {},
