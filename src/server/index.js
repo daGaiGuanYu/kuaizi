@@ -12,8 +12,10 @@ function start(port = 6666){
     throw Error('服务器不可重复启动')
   started = true
   
-  http.createServer(handle).listen(port)
+  let server = http.createServer(handle)
+  server.listen(port)
   console.log(`started on ${port}`)
+  return server
 }
 
 async function handle(req, res){
