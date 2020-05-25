@@ -26,6 +26,7 @@
 + 一些手套
 
 ## 下版本添加的特性
++ controller => collector
 + 无
 
 ## 周边插件
