@@ -7,7 +7,7 @@ const ExpectedError = require('../error/expected-error')
 const { writeJson } = require('../util/request')
 
 let started = false
-function start(port = 6666){
+function start(port = 8666){
   if(started)
     throw Error('服务器不可重复启动')
   started = true

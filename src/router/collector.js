@@ -1,12 +1,12 @@
 // @ts-check
+const RequestContext = require('../ctx/request')
+const router = require('./index')
 /**
- * @typedef {import('../ctx/request')} RequestContext
  * @typedef {(ctx: RequestContext) => any} RequestHandler
  * @typedef {(fn: RequestHandler, ctx: RequestContext) => RequestHandler} RequestGlove
  * @typedef {import('http').IncomingMessage} IncomingMessage
  * @typedef {import('http').ServerResponse} ServerResponse
  */
-const router = require('./index')
 
 class Collector {
   /**

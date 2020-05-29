@@ -1,14 +1,14 @@
 // @ts-check
+const RequestContext = require('../ctx/request')
+const Url = require('url')
+const wear = require('wear-glove')
+const ExpectedError = require('../error/expected-error')
 /**
- * @typedef {import('../ctx/request')} RequestContext
  * @typedef {(ctx: RequestContext) => any} RequestHandler
  * @typedef {(fn: RequestHandler, ctx: RequestContext) => RequestHandler} RequestGlove
  * @typedef {import('http').IncomingMessage} IncomingMessage
  * @typedef {import('http').ServerResponse} ServerResponse
  */
-const Url = require('url')
-const wear = require('wear-glove')
-const ExpectedError = require('../error/expected-error')
 
 // 路由数据
 const map = {
