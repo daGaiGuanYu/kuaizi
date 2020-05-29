@@ -9,7 +9,7 @@
 + 处理请求的函数
 + 手套
 
-## controller
+## collector
 + 一个集合，由“具有相似特征的 handler（比如对同一个数据表的操作）”组成
 + 对 controller 的配置将应用到 handler
 

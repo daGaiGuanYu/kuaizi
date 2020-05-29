@@ -4,12 +4,14 @@ const router = require('./router/index')
 
 module.exports = {
   app: require('./ctx/app'),
-  router: {
-    Controller: require('./router/controller'),
+  handler: {
+    Collector: require('./handler/collector'),
     config: router.config,
     add: router.add
   },
   server: require('./server/index'),
-  CommonError: require('./error/index'),
-  ExpectedError: require('./error/expected-error')
+  Error: {
+    common: require('./error/index'),
+    expected: require('./error/expected-error')
+  }
 }

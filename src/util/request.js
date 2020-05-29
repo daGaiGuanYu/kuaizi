@@ -1,18 +1,14 @@
 //@ts-check
-
-const TypeDef = require('../type-def/index')
 const Url = require('url')
 const qs = require('querystring')
 const app = require('../ctx/app')
 const CommonError = require('../error/index')
 
-/** @param {TypeDef.IncomingMessage} req */
 function getQuery(req){
   let querystring = Url.parse(req.url).query
   return qs.parse(querystring)
 }
 
-/** @param {TypeDef.IncomingMessage} req */
 function getJson(req){
   return new Promise( resolve => {
     let jsonStr = ''
@@ -30,10 +26,6 @@ function getJson(req){
   })
 }
 
-/**
- * @param {TypeDef.ServerResponse} res
- * @param {any} data
- */
 function writeJson(res, data){
   if(!(data instanceof CommonError))
     data = {
