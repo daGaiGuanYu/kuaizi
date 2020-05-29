@@ -3,15 +3,13 @@ require('./logger')
 const router = require('./router/index')
 
 module.exports = {
-  app: require('./ctx/app'),
-  handler: {
-    Collector: require('./handler/collector'),
+  App: require('./ctx/app'),
+  Handler: {
+    Collector: require('./router/collector'),
     config: router.config,
     add: router.add
   },
-  server: require('./server/index'),
-  Error: {
-    common: require('./error/index'),
-    expected: require('./error/expected-error')
-  }
+  Server: require('./server/index'),
+  CommonError: require('./error/index'),
+  ExpectedError: require('./error/expected-error')
 }

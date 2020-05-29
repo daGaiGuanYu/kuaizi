@@ -6,12 +6,12 @@
 由下面三部分组成
 + 请求的 http 方法
 + 请求的路径
-+ 处理请求的函数
 + 手套
++ 处理请求的函数
 
 ## collector
 + 一个集合，由“具有相似特征的 handler（比如对同一个数据表的操作）”组成
-+ 对 controller 的配置将应用到 handler
++ 对 collector 的配置将应用到之中每一个 handler
 
 ## router
 + 全局唯一

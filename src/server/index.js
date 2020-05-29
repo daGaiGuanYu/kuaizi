@@ -1,7 +1,7 @@
 // @ts-check
 const http = require('http')
 const RequestContext = require('../ctx/request')
-const router = require('../router')
+const router = require('../router/index')
 const CommonError = require('../error/index')
 const ExpectedError = require('../error/expected-error')
 const { writeJson } = require('../util/request')
