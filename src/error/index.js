@@ -1,5 +1,3 @@
-// @ts-check
-
 class CommonError extends Error {
   constructor(msg, code = 9999){ // 9999 为临时错误（基本不会被复用的异常）
     super(msg)
