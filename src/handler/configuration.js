@@ -1,3 +1,5 @@
+const ExpectedError = require('../error/expected-error')
+
 const data = {
   configed: false,
   baseUrl: '',

@@ -1,5 +1,5 @@
 const wear = require('wear-glove')
-const map = require('./router')
+const router = require('./router')
 const configuration = require('./configuration').data
 
 module.exports = {
@@ -48,11 +48,15 @@ function __add(method, path, gloveList, handler){
   path = configuration.baseUrl + path
   gloveList = [...configuration.gloveList, ...gloveList]
 
+  // 检查 path
+  if(!path)
+    throw Error('path 不可为空，根路径请传入斜杠')
+
   // 查重
-  if(map[method][path])
+  if(router.map[method][path])
     throw Error(`${method}: ${path} 已经注册过了（有两个 handler 对应相同的 method 和 path）`)
 
   // go
-  map[method][path] = wear([...configuration.gloveList, ...gloveList], handler)
+  router.map[method][path] = wear([...configuration.gloveList, ...gloveList], handler)
   console.log(`收集到路由：${method} ${path}`)
 }
