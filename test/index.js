@@ -1,7 +1,7 @@
-const { HandleRequest, Server } = require('../src/index')
+const { HandleRequest, Server } = require('kuaizi')
 
-Server.start(1000)
+Server.start(8080)
 
 HandleRequest.get('/', ctx => {
-  return 'success'
+  return 'hello, world'
 })
