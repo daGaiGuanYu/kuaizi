@@ -1,6 +1,6 @@
 {
-  "name": "chopstick",
-  "version": "4.0.1",
+  "name": "kuaizi",
+  "version": "1.0.0",
   "description": "你只需要一双筷子",
   "main": "src/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/daGaiGuanYu/chopstick.git"
   },
   "keywords": [
-    "chopstick"
+    "kuaizi"
   ],
   "author": "gy",
   "license": "ISC",
