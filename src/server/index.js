@@ -5,7 +5,7 @@ const Router = require('../handler/router')
 const CommonError = require('../error/index')
 const ExpectedError = require('../error/expected-error')
 
-const isProduction = !require('../ctx/app').isProduction()
+const isProduction = require('../ctx/app').isProduction()
 
 let started = false
 function start(port = 8080){
