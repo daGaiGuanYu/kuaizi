@@ -1,10 +1,10 @@
-const ExpectedError = require('../error/expected-error')
+const NBug = require('../exception/n-bug')
 
 const data = {
   configed: false,
   baseUrl: '',
   gloveList: [],
-  handle404: () => ExpectedError.NotFound
+  handle404: () => NBug.NotFound
 }
 
 function config(baseUrl, handle404, gloveList){

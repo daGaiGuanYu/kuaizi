@@ -2,8 +2,9 @@
 const Http = require('http')
 const AbstractRequestContext = require('../ctx/abstract-request-context')
 const Router = require('../handler/router')
-const CommonError = require('../error/index')
-const ExpectedError = require('../error/expected-error')
+const Exception = require('../exception/base')
+const Bug = require('../exception/bug')
+const NBug = require('../exception/n-bug')
 
 const isProduction = require('../ctx/app').isProduction()
 
@@ -27,9 +28,10 @@ async function handle(req, res){
       req, res
     })
   }catch(e){
-    if(!(e instanceof ExpectedError))
+    // 三种 error，nbug、bug、原生
+    if(!(e instanceof NBug)) // nbug 不需要打印调用栈
       console.error(e)
-    result = e.code?e:CommonError.Unknown
+    result = (e instanceof Exception)?e:Bug.Unknown // 原生 error，判定为“未知错误”
   }
   if(result)
     writeJson(res, result)
@@ -39,21 +41,21 @@ function stop(){
   // TODO
 }
 
-module.exports = {
-  start
-}
-
-function writeJson(res, data){
-  if(!(data instanceof CommonError))
+function writeJson(response, data){
+  if(!(data instanceof Exception))
     data = {
       code: 0,
       data
     }
-  res.setHeader('Content-type', 'application/json')
+  response.setHeader('Content-type', 'application/json')
   let result = JSON.stringify(data)
   if(!isProduction){
     console.log('响应：')
     console.log(result)
   }
-  res.end(result)
+  response.end(result)
+}
+
+module.exports = {
+  start
 }
