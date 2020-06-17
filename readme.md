@@ -30,4 +30,4 @@
 + 你的分享是最大的共享
 
 ## 关于作者
-我正在找一份网站/小程序开发的工作，有需要的老板请点[我的简简简简历](https://dagaiguanyu.github.io/Resume/dist/)
+我正在找一份网站/小程序开发的工作，有需要的老板请点[我的简简简简历](https://dagaiguanyu.github.io/Resume/dist/)(搬砖有劲，价格优惠)
