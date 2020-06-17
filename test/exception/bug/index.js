@@ -1,4 +1,4 @@
-const { Server, HandleRequest, Exception } = require('../../../src/index')
+const { Server, HandleRequest, Exception } = require('kuaizi')
 
 Server.start(8080)
 
