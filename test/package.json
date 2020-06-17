@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "kuaizi": "^1.0.0"
+    "kuaizi": "^1.0.1"
   }
 }
