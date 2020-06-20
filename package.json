@@ -1,6 +1,6 @@
 {
   "name": "kuaizi",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "你只需要一双筷子",
   "main": "src/index.js",
   "scripts": {

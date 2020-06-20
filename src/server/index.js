@@ -6,7 +6,7 @@ const Exception = require('../exception/base')
 const Bug = require('../exception/bug')
 const NBug = require('../exception/n-bug')
 
-const isProduction = require('../ctx/constant').IsProduction
+const { IsProduction, Nothing } = require('../ctx/constant')
 
 let started = false
 function start(port = 8080){
@@ -33,7 +33,7 @@ async function handle(req, res){
       console.error(e)
     result = (e instanceof Exception)?e:Bug.Unknown // 原生 error，判定为“未知错误”
   }
-  if(result)
+  if(result != Nothing)
     writeJson(res, result)
 }
 
@@ -49,7 +49,7 @@ function writeJson(response, data){
     }
   response.setHeader('Content-type', 'application/json')
   let result = JSON.stringify(data)
-  if(!isProduction){
+  if(!IsProduction){
     console.log('响应：')
     console.log(result)
   }
