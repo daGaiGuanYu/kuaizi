@@ -1,6 +1,6 @@
 const Url = require('url')
 const configuration = require('./configuration')
-const isProduction = require('../ctx/app').isProduction()
+const isProduction = require('../ctx/constant').IsProduction
 
 const map = {
   GET: {},

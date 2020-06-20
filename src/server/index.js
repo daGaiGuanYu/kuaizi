@@ -6,7 +6,7 @@ const Exception = require('../exception/base')
 const Bug = require('../exception/bug')
 const NBug = require('../exception/n-bug')
 
-const isProduction = require('../ctx/app').isProduction()
+const isProduction = require('../ctx/constant').IsProduction
 
 let started = false
 function start(port = 8080){
