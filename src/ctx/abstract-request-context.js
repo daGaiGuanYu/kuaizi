@@ -1,5 +1,4 @@
 const Url = require('url')
-const Querystring = require('querystring')
 
 module.exports = {
   getQuery(){
@@ -15,8 +14,7 @@ module.exports = {
 }
 
 function getQuery(req){
-  let querystring = Url.parse(req.url).query
-  return Querystring.parse(querystring)
+  return Url.parse(req.url, true).query
 }
 
 function getJson(req){
