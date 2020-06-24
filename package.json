@@ -1,11 +1,8 @@
 {
   "name": "kuaizi",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "你只需要一双筷子",
   "main": "src/index.js",
-  "scripts": {
-    "test": "nodemon ./test/index.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/daGaiGuanYu/chopstick.git"
@@ -19,9 +16,6 @@
     "url": "https://github.com/daGaiGuanYu/chopstick/issues"
   },
   "homepage": "https://github.com/daGaiGuanYu/chopstick#readme",
-  "devDependencies": {
-    "nodemon": "^2.0.2"
-  },
   "dependencies": {
     "wear-glove": ">= 3.0.0"
   }
