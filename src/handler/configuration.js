@@ -7,7 +7,7 @@ const data = {
   handle404: () => NBug.NotFound
 }
 
-function config(baseUrl, handle404, gloveList){
+function config(baseUrl, gloveList, handle404){
   if(data.configed)
     throw Error('Handler 只能配置一次') // 多次配置，就得把 router 初始化一遍，相当耗时
   data.configed = true

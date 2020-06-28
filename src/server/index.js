@@ -32,6 +32,8 @@ async function handle(req, res){
     // 三种 error，nbug、bug、原生
     if(!(e instanceof NBug)) // nbug 不需要打印调用栈
       console.error(e)
+    else if(e.log)
+      console.error(e.log)
     result = (e instanceof Exception)?e:Bug.Unknown // 原生 error，判定为“未知错误”
   }
   if(result != Nothing)

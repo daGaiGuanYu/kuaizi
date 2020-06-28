@@ -57,6 +57,6 @@ function __add(method, path, gloveList, handler){
     throw Error(`${method}: ${path} 已经注册过了（有两个 handler 对应相同的 method 和 path）`)
 
   // go
-  router.map[method][path] = wear([...configuration.gloveList, ...gloveList], handler)
+  router.map[method][path] = wear(gloveList, handler)
   console.log(`收集到路由：${method} ${path}`)
 }
