@@ -15,8 +15,9 @@ function start(port = 8080){
   started = true
   
   let server = Http.createServer(handle)
-  server.listen(port)
-  console.log(`started on ${port}`)
+  server.listen(port, () => {
+    console.log(`started on ${port}`)
+  })
   return server
 }
 
