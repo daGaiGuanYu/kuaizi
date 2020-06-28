@@ -38,10 +38,6 @@ async function handle(req, res){
     writeJson(res, result)
 }
 
-function stop(){
-  // TODO
-}
-
 function writeJson(response, data){
   if(!(data instanceof Exception))
     data = {
