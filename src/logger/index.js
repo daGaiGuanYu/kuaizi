@@ -10,5 +10,3 @@ console.log = function(...args){
 console.error = function(...args){
   raw.err(new Date(), ...args)
 }
-
-module.exports = {}
