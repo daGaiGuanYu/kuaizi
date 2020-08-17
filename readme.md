@@ -16,7 +16,7 @@
 + 简单
 + 进步大于稳定
 + 拓展性
-+ 不避讳可能会烧身的玩火行为
++ [锋利刀子](https://rubyonrails.org/doctrine/#provide-sharp-knives)
 
 ## 适用人群
 + 对 node 原生 api 有一定了解
