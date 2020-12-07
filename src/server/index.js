@@ -1,12 +1,12 @@
 // @ts-check
 const Http = require('http')
-const AbstractRequestContext = require('../ctx/abstract-request-context')
-const Router = require('../handler/router')
-const Exception = require('../exception/base')
-const Bug = require('../exception/bug')
-const NBug = require('../exception/n-bug')
+const ReqContext = require('../object/ctx/request')
+const getHanlder = require('../object/router/map').get
+const Bug = require('../object/exception/bug')
+const NBug = require('../object/exception/n-bug')
+const ResponseData = require('../object/entity/response-data')
 
-const { IsProduction, Nothing } = require('../ctx/constant')
+const { IsProduction, Nothing } = require('../constant/index')
 
 let started = false
 function start(port = 8080){
@@ -23,18 +23,21 @@ function start(port = 8080){
 
 async function handle(req, res){
   let result
+  const ctx = new ReqContext(req, res)
+  const method = req.method
+  const pathname = ctx.url.pathname
   try {
-    result = await Router.get(req)({
-      __proto__: AbstractRequestContext,
-      req, res
-    })
+    const handler = getHanlder(method, pathname)
+    result = await handler(ctx)
   }catch(e){
     // 三种 error，nbug、bug、原生
-    if(!(e instanceof NBug)) // nbug 不需要打印调用栈
+    if(e instanceof NBug){
+      result = e
+    } else { // nbug 不需要打印调用栈
+      console.error(method, pathname)
       console.error(e)
-    else if(e.log)
-      console.error(e.log)
-    result = (e instanceof Exception)?e:Bug.Unknown // 原生 error，判定为“未知错误”
+      result = ResponseData(1, '未知错误')
+    }
   }
   if(result != Nothing)
     writeJson(res, result)
