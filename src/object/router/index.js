@@ -2,8 +2,6 @@ const put = require('./map').put
 const formatParam = require('./func-format-param')
 
 module.exports = {
-  Collector: require('./collector'),
-  
   get(){
     __put('GET', arguments)
   },

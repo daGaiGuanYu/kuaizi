@@ -1,4 +1,6 @@
-module.exports = class extends Error {
+const Base = require('./base')
+
+module.exports = class extends Base {
   /**
    * 筷子定义的系统错误
    * @param {string} log 系统记录的日志

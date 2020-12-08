@@ -1,4 +1,4 @@
-const NBug = require('../src/object/exception/n-bug')
+const NBug = require('../object/exception/n-bug')
 
 module.exports = {
   NotFound: new NBug('未找到资源', 1001),

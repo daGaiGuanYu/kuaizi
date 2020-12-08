@@ -1,4 +1,6 @@
-module.exports = class extends Error {
+const Base = require('./base')
+
+module.exports = class extends Base {
   /**
    * 用户的异常操作
    * @param {string} msg 返回给用户的消息
@@ -11,12 +13,9 @@ module.exports = class extends Error {
     this.code = code
   }
 
-  equalTo(tar){
-    return tar && (tar.code == this.code) || false
-  }
   toJSON(){ // 改变 JSON.stringify(new Exception()) 的行为
     return {
-      code: this.code,
+      errCode: this.code,
       msg: this.msg
     }
   }

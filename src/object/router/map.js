@@ -1,7 +1,7 @@
-const config = require('../../config/router')
+const config = require('../../config/index').router
 const isProduction = require('../../constant/index')
 const wearGlove = require('wear-glove')
-const formatParam = require('./func-format-param')
+const { logger } = require('../../config')
 
 const map = {
   GET: {},
@@ -17,7 +17,7 @@ module.exports = {
 // 从 Http.IncomingMessage 里取出 path 和 method 返回 RequestHandler
 function get(method, path){
   if(!isProduction)
-    console.log(`收到请求 ${method} ${path}`)
+    logger.log(`收到请求 ${method} ${path}`)
   return map[method][path]||config.handle404
 }
 
@@ -44,5 +44,5 @@ function put(method, path, gloveList, handler){
     throw Error('接口重名了')
     
   map[method][path] = handler
-  console.log(`收集到路由：${method} ${path}`)
+  logger.log(`收集到路由：${method} ${path}`)
 }

@@ -1,4 +1,5 @@
 const Url = require('url')
+const { logger } = require('../../config/index')
 
 module.exports = class {
   constructor(req, res){
@@ -23,7 +24,7 @@ module.exports = class {
         try{
           resolve(JSON.parse(jsonStr))
         }catch(e){
-          console.log('解析请求Body里的json数据 失败')
+          logger.log('解析请求Body里的json数据 失败')
           resolve(null)
         }
       })
