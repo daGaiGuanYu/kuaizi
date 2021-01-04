@@ -3,12 +3,12 @@ module.exports = {
   
   constant: require('./constant/index'),
   
-  Bug: require('./object/exception/bug'),
-  NBug: require('./object/exception/n-bug'),
+  Bug: require('./class/exception/bug'),
+  NBug: require('./class/exception/n-bug'),
   CommonNBug: require('./constant/n-bug'),
   
-  Router: require('./object/router/index'),
-  Controller: require('./object/router/controller'),
+  Router: require('./class/router/index'),
+  Controller: require('./class/router/controller'),
 
-  Server: require('./object/server/index')
+  Server: require('./class/server/index')
 }
