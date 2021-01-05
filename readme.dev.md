@@ -4,7 +4,5 @@
 + 有补救措施
 + 原生错误不能正确描述错误产生的原因
 
-比如，未返回 ```Constant.Noting``` 而产生的 ```ERR_HTTP_HEADERS_SENT```，缘于**筷子使用者**的遗漏，没有补救措施，且 ```ERR_HTTP_HEADERS_SENT``` 已能描述错误。这种情况就不需要再捕获。
-
 # 不会被填的坑
 [不会被填的坑](https://www.yuque.com/guanyu-ftnpp/ggaspz/rg0742)
