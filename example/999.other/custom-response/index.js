@@ -1,11 +1,11 @@
-const { HandleRequest, Server, Constant } = require('kuaizi')
+const { router, server } = require('../../../lib')
 
-Server.start(8080)
+server.start(8888)
 
-HandleRequest.get('/', ctx => {
-  const serverResponse = ctx.res // 从请求上下文中，拿出响应对象
-  serverResponse.write('hell') // 写入 hell
-  serverResponse.write('o1') // 写入 o
-  serverResponse.end() // 标记响应完成～
-  return Constant.Nothing
+router.addHandler({
+  path: '/hello',
+  handler(ctx){
+    ctx.res.end('hello')
+    ctx.end()
+  }
 })
