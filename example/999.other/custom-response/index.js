@@ -6,6 +6,6 @@ router.addHandler({
   path: '/hello',
   handler(ctx){
     ctx.res.end('hello')
-    ctx.end()
+    ctx.end = true
   }
 })
