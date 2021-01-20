@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/daGaiGuanYu/chopstick#readme",
   "dependencies": {
-    "wear-glove": ">= 3.0.0"
+    "swch": ">= 1.0.0"
   }
 }
