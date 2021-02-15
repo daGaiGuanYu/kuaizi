@@ -1,17 +1,10 @@
 # 筷子
 你值得拥有快乐，请不要放弃
 
-## todo
-+ 路径参数 => 静态文件 => seo
-
-## 定位
-前后端分离后的“后端”的工具集（基于 node），用来写接口
-
 ## 优点
 + 简单：源码简单、使用简单、文档简单
 + 单纯
 + AOP
-+ 中文本位，系统运行日志、报错、文档均为中文
 
 ## 原则
 + 简单
@@ -24,13 +17,10 @@
 + 个人开发者
 + 小型团队
 
-## 文档
-由于一个大家都熟悉的原因，github 上显示不了图片，于是只能把[文档](https://www.yuque.com/guanyu-ftnpp/ggaspz)放国内的网站上
+## 如何使用
+[这个链接 https://dagaiguanyu.github.io/kuaizi-doc/](https://dagaiguanyu.github.io/kuaizi-doc/)
 
 ## 贡献
 + 接受且欢迎任何形式、情感的评论与批评
 + 欢迎 pull request
 + 你的分享是最大的贡献
-
-[这个链接](https://github.com/daGaiGuanYu/kuaizi/blob/master/readme.dev.md)是给想来提供帮助的你的一些提醒与建议
-
