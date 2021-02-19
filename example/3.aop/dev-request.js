@@ -2,7 +2,7 @@ const { server, router, aop: {
   devRequest
 }} = require('../../lib')
 
-router.config.gloveList.push(devRequest)
+router.config.breadList.push(devRequest)
 
 router.addHandler({
   method: 'get',
